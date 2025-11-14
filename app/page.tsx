@@ -210,7 +210,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section
+        {/* <section
           id="news"
           className="relative z-10 border-t border-white/10 bg-gradient-to-b from-zinc-900 to-zinc-950"
         >
@@ -252,9 +252,9 @@ export default function Home() {
               </ol>
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <section
+        {/* <section
           id="store"
           className="relative z-10 border-t border-white/10 bg-zinc-900/80 px-6 py-16"
         >
@@ -285,9 +285,9 @@ export default function Home() {
               )}
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <section className="relative z-10 border-t border-white/10 bg-zinc-950 px-6 py-16">
+        {/* <section className="relative z-10 border-t border-white/10 bg-zinc-950 px-6 py-16">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 rounded-3xl border border-white/5 bg-white/5 p-10">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-red-300">
@@ -319,10 +319,10 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
-      <footer className="border-t border-white/10 bg-black/80">
+      {/* <footer className="border-t border-white/10 bg-black/80">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-6 py-6 text-xs text-zinc-500 sm:flex-row sm:justify-between">
           <div>© {new Date().getFullYear()} Blade &amp; Soul Chronicle</div>
           <div className="flex gap-4">
@@ -331,7 +331,7 @@ export default function Home() {
             <a href="#">ติดต่อ</a>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
