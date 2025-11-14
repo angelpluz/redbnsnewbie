@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const navLinks = [
   { label: "หน้าแรก", href: "#" },
   { label: "แนวทางเล่น", href: "#guides" },
@@ -5,11 +7,14 @@ const navLinks = [
   { label: "ข่าวสาร", href: "#news" },
 ];
 
+const trailerLink = "https://www.youtube.com/watch?v=rqAdB97ckuY";
+
 const guides = [
   {
-    title: "สายนักดาบโลหิต",
-    description: "เรียนรู้จังหวะคอมโบ, ท่า stance และการสะสมคมดาบ.",
-    badge: "PvP Focus",
+    title: "เริ่มเกมทำอะไรดี",
+    description: "เริ่มต้นยังไง ฟาร์มของที่ไหน.",
+    badge: "มือใหม่ต้องดู",
+    href: "/newbie",
   },
   {
     title: "นักเวทธาตุ",
@@ -82,7 +87,7 @@ export default function Home() {
           className="absolute inset-0 opacity-50"
           style={{
             backgroundImage:
-              "linear-gradient(180deg, rgba(5,5,5,0.8), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1472457897821-70d3819a0e24?auto=format&fit=crop&w=1400&q=60')",
+              "linear-gradient(180deg, rgba(5,5,5,0.8), rgba(0,0,0,0.95)), url('/img/top.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -129,48 +134,79 @@ export default function Home() {
           </div>
 
           <div className="flex-1 rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-2xl shadow-red-900/30 backdrop-blur">
-            <div className="relative overflow-hidden rounded-2xl bg-black/60">
+            <a
+              href={trailerLink}
+              target="_blank"
+              rel="noreferrer"
+              className="relative block overflow-hidden rounded-2xl bg-black/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+            >
               <div
                 className="h-64 w-full"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60')",
+                  backgroundImage: "url('/img/top.jpg')",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               />
-              <button className="absolute inset-0 m-auto h-16 w-16 rounded-full bg-gradient-to-b from-orange-400 to-red-600 text-xl font-bold text-white shadow-lg shadow-black/40 transition hover:scale-105">
+              <span className="absolute inset-0 m-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-b from-orange-400 to-red-600 text-xl font-bold text-white shadow-lg shadow-black/40 transition hover:scale-105">
                 ▶
-              </button>
-            </div>
+              </span>
+            </a>
             <div className="mt-5">
-              <h3 className="text-xl font-semibold">Trailer ล่าสุด</h3>
+              <h3 className="text-xl font-semibold">มือใหม่ต้องทำอะไร</h3>
               <p className="mt-2 text-sm text-zinc-300">
-                ย้อนเหตุการณ์ก่อนอัปเดต &quot;สุริยันโลหิต&quot; พร้อมไกด์การเตรียมตัว
+                ดูได้ในคลิปนี้ &quot;&quot; พร้อมไกด์การเตรียมตัว
               </p>
+              <a
+                href={trailerLink}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex text-sm font-semibold text-red-300 hover:text-red-200"
+              >
+                เปิดดูใน YouTube →
+              </a>
             </div>
           </div>
         </section>
 
         <section id="guides" className="relative z-10 bg-zinc-50/5">
           <div className="mx-auto grid max-w-6xl gap-6 px-6 py-16 sm:grid-cols-3">
-            {guides.map((guide) => (
-              <article
-                key={guide.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:bg-white/10"
-              >
-                <span className="text-xs font-semibold uppercase tracking-wide text-orange-300">
-                  {guide.badge}
-                </span>
-                <h3 className="mt-3 text-xl font-semibold text-white">
-                  {guide.title}
-                </h3>
-                <p className="mt-3 text-sm text-zinc-300">{guide.description}</p>
-                <button className="mt-6 text-sm font-semibold text-red-300 hover:text-red-200">
-                  อ่านต่อ →
-                </button>
-              </article>
-            ))}
+            {guides.map((guide) => {
+              const article = (
+                <article
+                  className={`rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 transition ${
+                    guide.href
+                      ? "hover:-translate-y-1 hover:bg-white/15"
+                      : "opacity-95"
+                  }`}
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wide text-orange-300">
+                    {guide.badge}
+                  </span>
+                  <h3 className="mt-3 text-xl font-semibold text-white">
+                    {guide.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-zinc-300">
+                    {guide.description}
+                  </p>
+                  <span className="mt-6 inline-flex text-sm font-semibold text-red-300 hover:text-red-200">
+                    {guide.href ? "อ่านต่อ →" : "เร็วๆ นี้"}
+                  </span>
+                </article>
+              );
+
+              return guide.href ? (
+                <Link
+                  key={guide.title}
+                  href={guide.href}
+                  className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+                >
+                  {article}
+                </Link>
+              ) : (
+                <div key={guide.title}>{article}</div>
+              );
+            })}
           </div>
         </section>
 
