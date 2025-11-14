@@ -17,13 +17,13 @@ const guides = [
     href: "/newbie",
   },
   {
-    title: "นักเวทธาตุ",
-    description: "ปรับจังหวะสกิล AoE เพื่อเคลียร์ดันเจี้ยนอย่างมีสไตล์.",
+    title: "coming soon",
+    description: ".",
     badge: "Raid Essentials",
   },
   {
-    title: "มือใหม่หัดฉีดยา",
-    description: "แนวคิด build support สำหรับปาร์ตี้ที่ยังไม่ครบคลาส.",
+    title: "coming soon",
+    description: "",
     badge: "Starter",
   },
 ];
